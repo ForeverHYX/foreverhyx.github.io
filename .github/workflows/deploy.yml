@@ -2,7 +2,7 @@ name: Deploy Docs
 
 on:
   push:
-    branches: [ main ]  # 触发分支，按需修改
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -16,13 +16,22 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install mkdocs mkdocs-material  # 添加所需插件
+        run: pip install mkdocs mkdocs-material
 
       - name: Build the site
         run: mkdocs build --site-dir ./site
+
+      # 新增创建 CNAME 文件的步骤（在此处替换你的域名）
+      - name: Add CNAME file
+        run: |
+          echo "notebook.foreverhyx.top" > ./site/CNAME
+        # 如果域名需要保密，可以用 secret 替代：
+        # echo ${{ secrets.CNAME_DOMAIN }} > ./site/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          publish_branch: gh-pages
+          force_orphan: true
