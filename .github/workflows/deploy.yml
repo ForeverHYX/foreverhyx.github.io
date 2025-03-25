@@ -16,7 +16,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install mkdocs mkdocs-material
+        run: pip install mkdocs mkdocs-material mkdocs-heti-plugin
 
       - name: Build the site
         run: mkdocs build --site-dir ./site
