@@ -1,5 +1,10 @@
 site_name: Pipipi's Notebook
 site_url: https://notebook.foreverhyx.top
+repo_name: ForeverHYX/Notebook
+repo_url: https://github.com/ForeverHYX/Notebook
+edit_uri: tree/master/docs
+site_description: Pipipi's Notebook
+copyright: Copyright &copy; 2022-2025 <a href="https://github.com/ForeverHYX" target="_blank" rel="noopener">ForeverHYX</a>
 
 theme:
   name: material
