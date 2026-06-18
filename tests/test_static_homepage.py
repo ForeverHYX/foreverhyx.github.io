@@ -44,6 +44,7 @@ def read(path):
 def test_static_homepage_contains_core_profile_content():
     html = read("index.html")
 
+    assert "<title>Yixun Hong</title>" in html
     assert "Yixun Hong" in html
     assert "洪奕迅" in html
     assert "Student / Researcher" in html
@@ -69,8 +70,22 @@ def test_header_is_reduced_to_home_real_homepage_and_theme_toggle():
     labels = [link["text"].strip() for link in nav_links]
     hrefs = [link["href"] for link in nav_links]
 
-    assert labels == ["Home", "foreverhyx.top", "Home", "foreverhyx.top"]
-    assert hrefs == ["/", "https://foreverhyx.top/", "/", "https://foreverhyx.top/"]
+    assert labels == [
+        "Home",
+        "Resume",
+        "Full Version",
+        "Home",
+        "Resume",
+        "Full Version",
+    ]
+    assert hrefs == [
+        "/",
+        "/resume.html",
+        "https://foreverhyx.top/",
+        "/",
+        "/resume.html",
+        "https://foreverhyx.top/",
+    ]
     assert "themeToggle" in parser.ids
     assert "searchTrigger" not in parser.ids
     assert "inlineSearchInput" not in parser.ids
@@ -97,6 +112,61 @@ def test_backend_only_features_and_beian_are_not_in_static_page():
     ]
     for token in forbidden:
         assert token not in lowered
+
+
+def test_news_is_replaced_with_github_pages_and_award_items():
+    html = read("index.html")
+
+    assert "Homepage redesign launched with new layout." not in html
+    assert (
+        "<strong>2026.6:</strong> Simplified Homepage deployed on GitHub Pages. "
+        "Visit <a href=\"https://foreverhyx.top/\">foreverhyx.top</a> for the full version."
+    ) in html
+    assert (
+        "<strong>2026.5:</strong> ZJU supercomputing team won First Prize and "
+        "the Application Innovation Award at ASC26; I served as team captain."
+    ) in html
+    assert "https://www.zju.edu.cn/english/_t874/2026/0528/c19573a3167250/page.htm" in html
+    assert (
+        "<strong>2025.11:</strong> Zhejiang University claimed the IndySCC title "
+        "after a 46-hour cloud showdown; I contributed as a ZJUSCT team member."
+    ) in html
+    assert "https://www.zju.edu.cn/english/_t874/2026/0128/c19573a3131853/page.htm" in html
+
+
+def test_resume_page_mirrors_original_resume_view_with_remote_pdf():
+    html = read("resume.html")
+    parser = LinkParser()
+    parser.feed(html)
+
+    assert "<title>Yixun Hong | Resume</title>" in html
+    assert "Resume of Yixun Hong" in html
+    assert "&larr; Back to Home" in html
+    assert "Yixun Hong &middot; Undergraduate at Zhejiang University" in html
+    assert (
+        'src="https://foreverhyx.top/uploads/transcript.pdf" '
+        'title="Resume PDF" class="resume-pdf-iframe"'
+    ) in html
+    assert (
+        'href="https://foreverhyx.top/uploads/transcript.pdf" '
+        'target="_blank" rel="noopener noreferrer" class="link-styled"'
+    ) in html
+
+    nav_links = [
+        link
+        for link in parser.links
+        if "nav-link" in link["class"].split()
+        or "nav-mobile-link" in link["class"].split()
+    ]
+    labels = [link["text"].strip() for link in nav_links]
+    assert labels == [
+        "Home",
+        "Resume",
+        "Full Version",
+        "Home",
+        "Resume",
+        "Full Version",
+    ]
 
 
 def test_static_assets_are_self_contained_and_no_search_api_hook_remains():
