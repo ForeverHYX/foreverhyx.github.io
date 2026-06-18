@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style="color-scheme: light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yixun Hong's personal academic homepage. Undergraduate student at Zhejiang University, Information Security. Research interests: Computer Architecture, GPU simulation, and high-performance computing.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Yixun Hong">
+    <meta property="og:description" content="Personal academic homepage of Yixun Hong, undergraduate student at Zhejiang University.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://foreverhyx.github.io/">
+    <meta property="og:image" content="https://foreverhyx.github.io/uploads/avatar.png">
+    <link rel="canonical" href="https://foreverhyx.github.io/">
+    <title>Yixun Hong | Personal Academic Homepage</title>
+    <link rel="icon" href="/uploads/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Marcellus&family=Noto+Serif+SC:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Zhi+Mang+Xing&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Marcellus&family=Noto+Serif+SC:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Zhi+Mang+Xing&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+    </noscript>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = saved === "dark" || (!saved && sysDark) ? "dark" : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+          document.documentElement.style.colorScheme = "light";
+        }
+      })();
+    </script>
+</head>
+<body>
+    <div class="home-lightfield" aria-hidden="true"></div>
+    <header class="site-header">
+        <div class="container nav-shell">
+            <div class="nav-cluster" id="navCluster">
+                <div class="nav-island home-liquid-card" id="navIsland">
+                    <span class="home-liquid-warp nav-island-warp" aria-hidden="true"></span>
+                    <div class="nav-island-body">
+                        <a href="/" class="brand nav-brand" id="navBrand" aria-label="Yixun Hong homepage">
+                            <svg class="nav-brand-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span class="nav-brand-label nav-brand-label-full">Yixun Hong&rsquo;s Homepage</span>
+                            <span class="nav-brand-label nav-brand-label-short">Yixun Hong</span>
+                        </a>
+                        <div class="nav-main">
+                            <nav id="navLinks" class="nav-links nav-links-desktop" aria-label="Primary">
+                                <a href="/" class="nav-link" data-route="/">Home</a>
+                                <a href="https://foreverhyx.top/" class="nav-link nav-live-button" target="_blank" rel="noopener noreferrer">foreverhyx.top</a>
+                            </nav>
+                            <div class="nav-divider" aria-hidden="true"></div>
+                            <div class="nav-actions">
+                                <button type="button" class="action-btn nav-mobile-trigger" id="navMobileTrigger" title="Open Menu" aria-label="Open menu" aria-expanded="false">
+                                    <svg class="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                                    <svg class="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                                </button>
+                                <button type="button" id="themeToggle" class="action-btn nav-theme-toggle" title="Toggle Theme" aria-label="Toggle theme">
+                                    <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                                    <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-mobile-panel home-liquid-card" id="navMobilePanel">
+                    <span class="home-liquid-warp nav-island-warp" aria-hidden="true"></span>
+                    <div class="nav-mobile-panel-body">
+                        <nav class="nav-mobile-links" aria-label="Mobile primary">
+                            <a href="/" class="nav-mobile-link" data-route="/">Home</a>
+                            <a href="https://foreverhyx.top/" class="nav-mobile-link" target="_blank" rel="noopener noreferrer">foreverhyx.top</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="site-main">
+        <div class="container main-grid home-layout">
+            <aside class="sidebar home-sidebar">
+                <div class="card home-liquid-card home-profile-card">
+                    <span class="home-liquid-warp" aria-hidden="true"></span>
+                    <div class="home-liquid-body">
+                        <img src="/uploads/avatar.png" class="avatar" alt="Avatar">
+                        <h1 class="profile-name">Yixun Hong</h1>
+                        <p class="profile-name-cn">洪奕迅</p>
+                        <p class="profile-role">Student / Researcher</p>
+                        <div class="contact-links">
+                            <a href="mailto:foreverhyx@zju.edu.cn" class="contact-icon" title="Email">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </a>
+                            <a href="https://github.com/ForeverHYX" class="contact-icon" target="_blank" rel="noreferrer" title="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            </a>
+                        </div>
+                        <div class="location">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Zhejiang University, Hangzhou, 310027, China</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card home-liquid-card home-news-card">
+                    <span class="home-liquid-warp" aria-hidden="true"></span>
+                    <div class="home-liquid-body">
+                        <h3 class="news-title"><span>News</span></h3>
+                        <ul class="news-list">
+                            <li class="news-item"><strong>2026-01:</strong> Homepage redesign launched with new layout.</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            <section class="card home-content home-glass">
+                <div class="home-glass-body">
+                    <section class="cv-section section-introduction">
+                        <h2 class="section-title">Introduction</h2>
+                        <div class="prose">
+                            <p>I am <strong>Yixun Hong</strong>, a junior student at Zhejiang University majoring in <strong>Information Security</strong>. My research interests focus on <strong>full-stack design for Computer Architecture</strong> and <strong>GPU microarchitecture and simulator</strong>.</p>
+                            <p>I go to the gym regularly and also enjoy cycling, badminton, hiking, and photography in my spare time.</p>
+                        </div>
+                    </section>
+                    <section class="cv-section section-education">
+                        <h2 class="section-title">Education</h2>
+                        <div class="prose">
+                            <div class="edu-timeline">
+                                <div class="edu-timeline-item is-active">
+                                    <div class="edu-timeline-date">
+                                        <span>2023 - Present</span>
+                                    </div>
+                                    <div class="edu-timeline-marker">
+                                        <div class="edu-timeline-dot"></div>
+                                    </div>
+                                    <div class="edu-timeline-content">
+                                        <div class="edu-timeline-text">
+                                            <span class="edu-institution">Zhejiang University</span>
+                                            <p class="edu-role">Bachelor of Engineering, Information Security</p>
+                                        </div>
+                                        <div class="edu-logo-group"><img src="/uploads/zju.png" alt="ZJU" class="edu-logo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="cv-section section-publications">
+                        <h2 class="section-title">Publications</h2>
+                        <div class="prose"><p>None to date</p></div>
+                    </section>
+                    <section class="cv-section section-awards">
+                        <h2 class="section-title">Awards</h2>
+                        <div class="prose">
+                            <h2 id="contest-awards">Contest Awards</h2>
+                            <p>I am honored to have been a member of <a href="https://www.zjusct.io/">ZJUSCT</a>, a utopia for high-performance computing enthusiasts, since 2024.</p>
+                            <ul>
+                                <li><strong>Second Prize</strong>, <a href="https://www.asc-events.net/StudentChallenge/History/2025/index.html">ASC25 Student Supercomputer Challenge</a>, Team Member, RNA-m5C detection workflow optimization</li>
+                                <li><strong>Third Prize</strong>, <a href="https://solver-conference.cn/solverchallenge25/">Solver Challenge 2025</a>, Team Member, iterative method optimization</li>
+                                <li><strong>Overall Winner</strong>, <a href="https://sc25.supercomputing.org/program/awards/">IndySCC at SC25</a>, Team Member, SST optimization</li>
+                                <li><strong>First Prize (Rank 5/25) &amp; Application Innovation</strong>, <a href="https://www.asc-events.net/StudentChallenge/ASC26/final-competition.php">ASC26 Student Supercomputer Challenge</a>, Team Leader, QiboTN and AMSS-NCKU optimization</li>
+                            </ul>
+                            <h2 id="scholarships">Scholarships</h2>
+                            <ul>
+                                <li><strong>Third-Class Academic Scholarship</strong>, Zhejiang University (2024)</li>
+                                <li><strong>Huang Hong &amp; Wu Xiaobei Scholarship</strong>, Zhejiang University (2024)</li>
+                                <li><strong>Second-Class Academic Scholarship</strong>, Zhejiang University (2025)</li>
+                                <li><strong>Jijia Practice Scholarship</strong>, College of Computer Science and Technology, Zhejiang University and a4x.io (2025)</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="cv-section section-teaching">
+                        <h2 class="section-title">Teaching</h2>
+                        <div class="prose">
+                            <ul>
+                                <li><strong>Computer System I</strong>, Spring and Summer 2025, TA</li>
+                                <li><strong>Computer System II</strong>, Fall and Winter 2025, TA</li>
+                                <li><strong>HPC101</strong>, Summer 2025, TA</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            &copy; <span id="footerYear"></span> Yixun Hong. Static GitHub Pages mirror of the public profile at <a href="https://foreverhyx.top/" style="color:inherit;text-decoration:underline">foreverhyx.top</a>.
+        </div>
+    </footer>
+    <script src="/static/js/effects/lightfield.js" defer></script>
+    <script src="/static/js/effects/liquid-glass.js" defer></script>
+    <script src="/static/js/components/site-header.js" defer></script>
+</body>
+</html>
