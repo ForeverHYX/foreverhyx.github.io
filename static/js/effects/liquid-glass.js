@@ -8,9 +8,11 @@
     };
     const SVG_NS = "http://www.w3.org/2000/svg";
     const XLINK_NS = "http://www.w3.org/1999/xlink";
-    const desktopLiquidGlass = window.matchMedia("(min-width: 801px)");
+    const desktopLiquidGlass = window.matchMedia(
+      "(min-width: 801px) and (hover: hover) and (pointer: fine)"
+    );
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const POINTER_SYNC_INTERVAL = 40;
+    const POINTER_SYNC_INTERVAL = 80;
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
     const lerp = (from, to, t) => from + (to - from) * t;
     const displacementMapCache = /* @__PURE__ */ new Map();
@@ -323,8 +325,8 @@
         return [];
       }
       const navAmbient = card.classList.contains("nav-island");
-      const globalAmbient = navAmbient || card.classList.contains("home-profile-card") || card.classList.contains("home-news-card") || card.classList.contains("ambient-liquid-card");
-      card.classList.contains("home-profile-card") || card.classList.contains("home-news-card");
+      const runtimeLiquid = card.classList.contains("ambient-liquid-card");
+      const globalAmbient = runtimeLiquid;
       return [{
         card,
         warp,
@@ -340,6 +342,7 @@
         active: false,
         focused: false,
         navAmbient,
+        runtimeLiquid,
         globalAmbient,
         navIdleGlow: liquidRest.glow,
         navHoverGlow: liquidRest.glow,
@@ -387,7 +390,7 @@
       const navHoverGlow = parseFloat(styles.getPropertyValue("--liquid-nav-hover-glow")) || navIdleGlow;
       const backdropFilter = `blur(${styles.getPropertyValue("--liquid-blur").trim() || "22px"}) saturate(${styles.getPropertyValue("--liquid-saturation").trim() || "180%"}) brightness(${styles.getPropertyValue("--liquid-brightness").trim() || "1.08"})`;
       const enabled = desktopLiquidGlass.matches && warpVisible && width >= 20 && height >= 20;
-      const runtimeEnabled = enabled && (reduceMotion.matches || state.focused || state.globalAmbient);
+      const runtimeEnabled = enabled && state.runtimeLiquid;
       if (!runtimeEnabled) {
         state.width = width;
         state.height = height;

@@ -15,13 +15,13 @@
     <link rel="icon" href="/uploads/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Marcellus&family=Noto+Serif+SC:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Zhi+Mang+Xing&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=JetBrains+Mono:wght@400;500&family=Marcellus&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&text=%E6%B4%AA%E5%A5%95%E8%BF%85&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Marcellus&family=Noto+Serif+SC:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Zhi+Mang+Xing&display=swap">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=JetBrains+Mono:wght@400;500&family=Marcellus&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&text=%E6%B4%AA%E5%A5%95%E8%BF%85&display=swap">
     </noscript>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css?v=158">
     <script>
       (function () {
         try {
@@ -58,11 +58,10 @@
                             </nav>
                             <div class="nav-divider" aria-hidden="true"></div>
                             <div class="nav-actions">
-                                <button type="button" class="action-btn nav-mobile-trigger" id="navMobileTrigger" title="Open Menu" aria-label="Open menu" aria-expanded="false">
-                                    <svg class="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-                                    <svg class="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                                <button type="button" class="action-btn nav-mobile-trigger" id="navMobileTrigger" title="Open Menu" aria-label="Open menu" aria-expanded="false" aria-controls="navMobilePanel">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                                 </button>
-                                <button type="button" id="themeToggle" class="action-btn nav-theme-toggle" title="Toggle Theme" aria-label="Toggle theme">
+                                <button type="button" id="themeToggle" class="action-btn nav-theme-toggle" title="Switch to dark mode" aria-label="Switch to dark mode" aria-pressed="false">
                                     <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                                     <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
                                 </button>
@@ -70,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="nav-mobile-panel home-liquid-card" id="navMobilePanel">
+                <div class="nav-mobile-panel home-liquid-card" id="navMobilePanel" aria-hidden="true">
                     <span class="home-liquid-warp nav-island-warp" aria-hidden="true"></span>
                     <div class="nav-mobile-panel-body">
                         <nav class="nav-mobile-links" aria-label="Mobile primary">
@@ -87,20 +86,21 @@
         <div class="container">
             <div class="page-shell">
                 <section class="cv-section">
-                    <div class="card home-liquid-card">
-                        <span class="home-liquid-warp" aria-hidden="true"></span>
-                        <div class="home-liquid-body" style="padding:40px">
-                            <div class="card" style="margin-bottom:24px;padding:28px 32px">
-                                <div style="margin-bottom:20px">
-                                    <a href="/" class="action-btn" style="text-decoration:none;padding-left:0;color:var(--text);font-weight:500">&larr; Back to Home</a>
+                    <div class="card home-glass home-content resume-card">
+                        <div class="home-glass-body resume-body">
+                            <div class="card home-glass article-card resume-hero">
+                                <div class="home-glass-body">
+                                    <div class="resume-back">
+                                        <a href="/" class="action-btn resume-back-link">&larr; Back to Home</a>
+                                    </div>
+                                    <h1 class="resume-title">Resume</h1>
+                                    <p class="resume-subtitle">Yixun Hong &middot; Undergraduate at Zhejiang University</p>
                                 </div>
-                                <h1 style="font-size:2.5rem;font-weight:600;margin:0 0 12px 0;line-height:1.2;color:var(--heading)">Resume</h1>
-                                <p style="color:var(--muted);font-size:15px;margin:0 0 8px 0;line-height:1.6">Yixun Hong &middot; Undergraduate at Zhejiang University</p>
                             </div>
-                            <div class="resume-pdf-wrapper" style="border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(73,92,138,0.18);background:var(--glass-lo-bg);backdrop-filter:blur(18px) saturate(165%);-webkit-backdrop-filter:blur(18px) saturate(165%);border:1px solid var(--glass-hi-border)">
-                                <iframe src="https://foreverhyx.top/uploads/transcript.pdf" title="Resume PDF" class="resume-pdf-iframe" style="width:100%;height:min(80vh,1000px);border:none;display:block"></iframe>
+                            <div class="resume-pdf-wrapper">
+                                <iframe src="https://foreverhyx.top/uploads/transcript.pdf" title="Resume PDF" class="resume-pdf-iframe"></iframe>
                             </div>
-                            <div style="margin-top:16px;text-align:center;color:var(--muted);font-size:14px">
+                            <div class="resume-pdf-footer">
                                 <a href="https://foreverhyx.top/uploads/transcript.pdf" target="_blank" rel="noopener noreferrer" class="link-styled">Open PDF in new tab</a>
                             </div>
                         </div>
@@ -114,8 +114,7 @@
             &copy; <span id="footerYear"></span> Yixun Hong. Static GitHub Pages mirror of the public profile at <a href="https://foreverhyx.top/" style="color:inherit;text-decoration:underline">foreverhyx.top</a>.
         </div>
     </footer>
-    <script src="/static/js/effects/lightfield.js" defer></script>
-    <script src="/static/js/effects/liquid-glass.js" defer></script>
-    <script src="/static/js/components/site-header.js" defer></script>
+    <script src="/static/js/effects/lightfield.js?v=100" defer></script>
+    <script src="/static/js/components/site-header.js?v=2" defer></script>
 </body>
 </html>

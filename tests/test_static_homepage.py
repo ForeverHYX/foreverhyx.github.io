@@ -143,6 +143,8 @@ def test_resume_page_mirrors_original_resume_view_with_remote_pdf():
     assert "Resume of Yixun Hong" in html
     assert "&larr; Back to Home" in html
     assert "Yixun Hong &middot; Undergraduate at Zhejiang University" in html
+    assert 'class="card home-glass home-content resume-card"' in html
+    assert 'class="card home-glass article-card resume-hero"' in html
     assert (
         'src="https://foreverhyx.top/uploads/transcript.pdf" '
         'title="Resume PDF" class="resume-pdf-iframe"'
@@ -192,6 +194,21 @@ def test_static_assets_are_self_contained_and_no_search_api_hook_remains():
     assert "/api/search-index" not in source_text
     assert "searchtrigger" not in source_text
     assert "inlinesearchinput" not in source_text
+
+
+def test_pages_use_current_frosted_material_without_legacy_filter_runtime():
+    homepage = read("index.html")
+    resume = read("resume.html")
+    stylesheet = read("static/css/styles.css")
+
+    for html in [homepage, resume]:
+        assert 'href="/static/css/styles.css?v=158"' in html
+        assert 'src="/static/js/effects/lightfield.js?v=100"' in html
+        assert "effects/liquid-glass.js" not in html
+
+    assert 'class="cv-section section-selected-publication"' in homepage
+    assert "Unified frosted-liquid material system" in stylesheet
+    assert ".resume-card .home-glass-body" in stylesheet
 
 
 def test_search_engine_files_point_to_github_pages_home():

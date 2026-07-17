@@ -162,8 +162,16 @@
     let ambientTimerId = 0;
     let pointerIdleTimerId = 0;
     const setTransition = (spot, motionMs, opacityMs = motionMs * 0.72) => {
-      spot.element.style.setProperty("--spot-motion-duration", `${Math.round(motionMs)}ms`);
-      spot.element.style.setProperty("--spot-opacity-duration", `${Math.round(opacityMs)}ms`);
+      const motionDuration = `${Math.round(motionMs)}ms`;
+      const opacityDuration = `${Math.round(opacityMs)}ms`;
+      if (spot.renderedMotionDuration !== motionDuration) {
+        spot.element.style.setProperty("--spot-motion-duration", motionDuration);
+        spot.renderedMotionDuration = motionDuration;
+      }
+      if (spot.renderedOpacityDuration !== opacityDuration) {
+        spot.element.style.setProperty("--spot-opacity-duration", opacityDuration);
+        spot.renderedOpacityDuration = opacityDuration;
+      }
     };
     const applyGeometry = (spot) => {
       spot.element.style.setProperty("--spot-size", `${spot.size.toFixed(1)}px`);
@@ -181,8 +189,16 @@
       const parallax = coarsePointer.matches ? 0 : spot.config.parallax;
       const px = spot.x * viewport.width + pointer.x * parallax;
       const py = spot.y * viewport.height + pointer.y * parallax;
-      spot.element.style.setProperty("--spot-opacity", spot.opacity.toFixed(3));
-      spot.element.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${spot.scale.toFixed(3)})`;
+      const opacity = spot.opacity.toFixed(3);
+      const transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${spot.scale.toFixed(3)})`;
+      if (spot.renderedOpacity !== opacity) {
+        spot.element.style.setProperty("--spot-opacity", opacity);
+        spot.renderedOpacity = opacity;
+      }
+      if (spot.renderedTransform !== transform) {
+        spot.element.style.transform = transform;
+        spot.renderedTransform = transform;
+      }
     };
     const renderSpots = () => {
       const viewport = {
@@ -341,12 +357,27 @@
       spots.forEach((spot) => spot.element.remove());
     };
   }
-  // Auto-initialize on DOM ready
+  // Keep the static light-field gradients available for first paint, then add
+  // the six ambient moving spots once navigation/content entry has settled.
+  // This avoids creating large blurred compositor layers in the same frame as
+  // a newly navigated page while preserving the full ambient effect.
+  function scheduleHomeLightfield() {
+    var start = function () {
+      initHomeLightfield();
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(start, { timeout: 480 });
+    } else {
+      window.setTimeout(start, 320);
+    }
+  }
+
+  // Auto-initialize after DOM ready and the critical first frame.
   if (typeof document !== "undefined") {
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initHomeLightfield);
+      document.addEventListener("DOMContentLoaded", scheduleHomeLightfield);
     } else {
-      initHomeLightfield();
+      scheduleHomeLightfield();
     }
   }
 })();
