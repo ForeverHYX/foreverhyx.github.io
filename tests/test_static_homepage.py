@@ -52,6 +52,7 @@ def test_static_homepage_contains_core_profile_content():
     assert "Information Security" in html
     assert "Computer Architecture" in html
     assert "GPU microarchitecture" in html
+    assert "FlashGPU-sim: Enabling GPU Modeling" in html
     assert "ASC25 Student Supercomputer Challenge" in html
     assert "HPC101" in html
 
@@ -96,9 +97,12 @@ def test_backend_only_features_and_beian_are_not_in_static_page():
     lowered = html.lower()
 
     forbidden = [
-        "/articles",
-        "/daily",
-        "/gallery",
+        'href="/articles',
+        "href='/articles",
+        'href="/daily',
+        "href='/daily",
+        'href="/gallery',
+        "href='/gallery",
         'href="/upload"',
         "href='/upload'",
         ">upload<",
@@ -114,24 +118,22 @@ def test_backend_only_features_and_beian_are_not_in_static_page():
         assert token not in lowered
 
 
-def test_news_is_replaced_with_github_pages_and_award_items():
+def test_news_and_selected_publication_match_full_homepage():
     html = read("index.html")
 
-    assert "Homepage redesign launched with new layout." not in html
-    assert (
-        "<strong>2026.6:</strong> Simplified Homepage deployed on GitHub Pages. "
-        "Visit <a href=\"https://foreverhyx.top/\">foreverhyx.top</a> for the full version."
-    ) in html
-    assert (
-        "<strong>2026.5:</strong> ZJU supercomputing team won First Prize and "
-        "the Application Innovation Award at ASC26; I served as team captain."
-    ) in html
+    assert "Simplified Homepage deployed on GitHub Pages" not in html
+    assert "<strong>2026-07:</strong> New album released:" in html
+    assert "https://foreverhyx.top/gallery?focus=Western%20Sichuan" in html
+    assert "<strong>FlashGPU-sim</strong> is accepted by" in html
+    assert "https://www.microarch.org/micro59/index.php" in html
+    assert "Homepage redesign launched with new layout." in html
     assert "https://www.zju.edu.cn/english/_t874/2026/0528/c19573a3167250/page.htm" in html
-    assert (
-        "<strong>2025.11:</strong> Zhejiang University claimed the IndySCC title "
-        "after a 46-hour cloud showdown; I contributed as a ZJUSCT team member."
-    ) in html
     assert "https://www.zju.edu.cn/english/_t874/2026/0128/c19573a3131853/page.htm" in html
+    assert "<h2 class=\"section-title\">Selected Publication</h2>" in html
+    assert "publication-index-conference\">C1</span>" in html
+    assert "publication-venue-label\">MICRO59</span>" in html
+    assert "GPU Microarchitecture</span>" in html
+    assert 'href="https://foreverhyx.top/gallery">photography</a>' in html
 
 
 def test_resume_page_mirrors_original_resume_view_with_remote_pdf():
@@ -146,11 +148,11 @@ def test_resume_page_mirrors_original_resume_view_with_remote_pdf():
     assert 'class="card home-glass home-content resume-card"' in html
     assert 'class="card home-glass article-card resume-hero"' in html
     assert (
-        'src="https://foreverhyx.top/uploads/transcript.pdf" '
+        'src="https://foreverhyx.top/uploads/resume.pdf" '
         'title="Resume PDF" class="resume-pdf-iframe"'
     ) in html
     assert (
-        'href="https://foreverhyx.top/uploads/transcript.pdf" '
+        'href="https://foreverhyx.top/uploads/resume.pdf" '
         'target="_blank" rel="noopener noreferrer" class="link-styled"'
     ) in html
 
